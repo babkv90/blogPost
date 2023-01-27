@@ -6,6 +6,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'dist/blog-post')));
 
 app.get('*', (req, res) => {
+  console.log("api called");
   res.sendFile(path.join(__dirname, 'dist/blog-post/index.html'));
 });
 
