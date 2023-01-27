@@ -1,0 +1,36 @@
+ /* CSS for Navbar */
+ .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 15px;
+  }
+  .navbar a {
+    color: black;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  .navbar .logo {
+    flex-grow: 1;
+  }
+
+
+  /* CSS for Media Queries */
+@media (max-width: 767px) {
+    .sidebar {
+      position: absolute;
+      top: 60px; /* Height of navbar */
+      left: 0;
+      bottom: 0;
+      width: 100%; /* Full width on small screens */
+      background-color: #f1f1f1;
+      padding: 20px;
+      display: none;
+    }
+    .navbar, .main-content {
+      margin-left: 0; /* Remove margin on small screens */
+    }
+  }
+
+  

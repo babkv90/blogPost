@@ -1,0 +1,20 @@
+
+<!-- <p>hello</p> -->
+<app-navbar-component></app-navbar-component>
+<div class="container">
+   <div class="card-container" *ngFor="let item of blogContentSchema">
+    <h1>{{ item.HeaderTitle }}</h1>
+    <div *ngFor="let paragraph of item.paragraph">
+        <div *ngIf="paragraph.contentType === 'Article'">
+            <p>{{paragraph.content}}</p>
+        </div>
+        <div *ngIf="paragraph.contentType === 'code'">
+            <pre>{{ paragraph.content }}</pre>
+          </div>
+       
+    </div>
+   
+   </div>
+
+</div>
+
