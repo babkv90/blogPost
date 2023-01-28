@@ -2,8 +2,18 @@ const express = require('express');
 const path = require('path');
 const app = express();
 // const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
 
-app.use(express.static(path.join(__dirname, 'dist/blog-post')));
+MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
+    if (err) throw err;
+    // const db = client.db("test");
+    console.log("Connected to MongoDB!");
+    client.close();
+});
+
+
+app.use(express.static(path.join(__dirname, '')));
 
 app.get('*', (req, res) => {
   console.log("api called");
