@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BlogContentServiceService } from '../blog-content-service.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -14,14 +14,12 @@ export class AdminComponent implements OnInit {
   title = 'FormArray Example in Angular Reactive forms';
  
   blogpostForm: FormGroup;
-  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService) { 
+  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router: Router) { 
     this.blogpostForm = this.fb.group({
-      Header: '',
-      paragraphs: this.fb.array([
-     
-      ]) ,
+      HeaderTitle: '',
+      paragraph: this.fb.array([]) ,
     });
-  
+ 
   }
 
   ngOnInit(): void {
@@ -29,8 +27,17 @@ export class AdminComponent implements OnInit {
   }
 
   
+  blogContentSchema:any=[];
+
+  getData(){
+    return this.bdservice.blogContentData;
+  }
+  
+
+
+   
   get paragraphs() : FormArray {
-    return this.blogpostForm.controls["paragraphs"] as FormArray
+    return this.blogpostForm.controls["paragraph"] as FormArray
   }
  
   newblock(): FormGroup {
@@ -49,11 +56,12 @@ export class AdminComponent implements OnInit {
   }
  
   onSubmit() {
-    console.log(this.blogpostForm.value);
+    // console.log(this.blogpostForm.value)
+    // this.blogContentSchema.push(this.blogpostForm.value);
+
     this.bdservice.blogContentData.push(this.blogpostForm.value);
+    this.router.navigate(['']);
   }
-
-
  
 }
 

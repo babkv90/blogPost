@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BlogContentServiceService } from '../blog-content-service.service';
+import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-module',
@@ -9,16 +10,27 @@ import { BlogContentServiceService } from '../blog-content-service.service';
 export class DashboardModuleComponent implements OnInit {
   @ViewChild('codeSnippet') codeSnippet!: ElementRef;
 
-  constructor(public blogContentService:BlogContentServiceService) { }
+  blogpostForm: FormGroup;
+  testname='Abinash';
+  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService) { 
+    this.blogpostForm = this.fb.group({
+      HeaderTitle: '',
+      paragraph: this.fb.array([]) ,
+    });
+  
+  }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      this.testname = 'kumar'
+    },5000)
     this.blogContentSchema =this.getData();
   }
 
   blogContentSchema:any=[];
 
   getData(){
-    return this.blogContentService.blogContentData;
+    return this.bdservice.blogContentData;
   }
   
   copyCode(a:any) {
@@ -28,6 +40,33 @@ export class DashboardModuleComponent implements OnInit {
     } else {
       console.log("Code Snippet not found");
     }
+  }
+
+   
+  get paragraphs() : FormArray {
+    return this.blogpostForm.controls["paragraph"] as FormArray
+  }
+ 
+  newblock(): FormGroup {
+    return this.fb.group({
+      contentType: '',
+      content: '',
+    })
+  }
+ 
+  addSkills() {
+    this.paragraphs.push(this.newblock());
+  }
+ 
+  removeSkill(i:number) {
+    this.paragraphs.removeAt(i);
+  }
+ 
+  onSubmit() {
+    // console.log(this.blogpostForm.value)
+    // this.blogContentSchema.push(this.blogpostForm.value);
+
+    this.bdservice.blogContentData.push(this.blogpostForm.value);
   }
 
  

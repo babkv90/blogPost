@@ -1,13 +1,12 @@
-
 <form [formGroup]="blogpostForm" (ngSubmit)="onSubmit()">
   <p>
     <label for="name">Name </label>
-    <input type="text" id="Header" name="Header" formControlName="Header">
+    <input type="text" id="HeaderTitle" name="Header" formControlName="HeaderTitle">
   </p>
   Paragraph:<p>
     <button type="button" (click)="addSkills()">Add</button>
   </p>
-  <div formArrayName="paragraphs">
+  <div formArrayName="paragraph">
     <div *ngFor="let skill of paragraphs.controls; let i=index">
       <div [formGroupName]="i">
       
@@ -28,6 +27,3 @@
   </p>
  
 </form>
- 
- 
-
