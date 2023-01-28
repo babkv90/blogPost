@@ -7,7 +7,7 @@ const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mo
 
 MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
     if (err) throw err;
-    // const db = client.db("test");
+    const db = client.db("blogpost");
     console.log("Connected to MongoDB!");
     client.close();
 });
