@@ -4,7 +4,7 @@ const app = express();
 // const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
-
+const blogs = require('./routes/route'); 
 MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
     if (err) throw err;
     const db = client.db("blogpost");
@@ -14,7 +14,7 @@ MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
 
 
 app.use(express.static(path.join(__dirname, '')));
-
+app.use('/blogposts',blogs);
 app.get('*', (req, res) => {
   console.log("api called");
   res.sendFile(path.join(__dirname, 'dist/blog-post/index.html'));
