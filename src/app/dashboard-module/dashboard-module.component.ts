@@ -23,11 +23,7 @@ export class DashboardModuleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(()=>{
-      this.testname = 'kumar'
-    },5000)
-    this.blogContentSchema =this.getData();
-    console.log("called");
+    this.getData();
   }
 
   blogContentSchema:any=[];
@@ -36,6 +32,7 @@ export class DashboardModuleComponent implements OnInit {
     // return this.bdservice.blogContentData;
     this.bdservice.getData().subscribe((blogData)=>{
       console.log(blogData);
+      this.blogContentSchema =blogData
     });
   }
   
