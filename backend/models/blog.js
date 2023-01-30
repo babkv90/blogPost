@@ -5,9 +5,8 @@ const Schema = mongoose.Schema;
 const blog = new Schema ({
         HeaderTitle: { type: String, required: true },
         paragraph: [
-            {"contentType":{ type: String, required: true }},
-            {"content" : { type: String, required: true }}
-        ],
+                {"contentType":{type:String,required:true},"content":{type:String,required:true}}
+                   ],
 });
 
 
