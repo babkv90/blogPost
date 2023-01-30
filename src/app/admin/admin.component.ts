@@ -29,9 +29,9 @@ export class AdminComponent implements OnInit {
   
   blogContentSchema:any=[];
 
-  getData(){
-    return this.bdservice.blogContentData;
-  }
+  // getData(){
+  //   return this.bdservice.blogContentData;
+  // }
   
 
 
@@ -58,9 +58,12 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     // console.log(this.blogpostForm.value)
     // this.blogContentSchema.push(this.blogpostForm.value);
-
-    this.bdservice.blogContentData.push(this.blogpostForm.value);
-    this.router.navigate(['']);
+    // this.bdservice.blogContentData.push(this.blogpostForm.value);
+    this.bdservice.saveData(this.blogpostForm.value).subscribe((blogData)=>{
+      console.log(blogData);
+      this.router.navigate(['']);
+    });
+   
   }
  
 }

@@ -4,6 +4,7 @@
 
 
 <app-navbar-component></app-navbar-component>
+<button (click)="navigateToAdmin()">Go to Admin</button>
 <div class="container">
    <div class="card-container" *ngFor="let item of blogContentSchema">
     <h1>{{ item.HeaderTitle }}</h1>

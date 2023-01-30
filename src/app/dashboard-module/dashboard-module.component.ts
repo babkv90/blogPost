@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BlogContentServiceService } from '../blog-content-service.service';
 import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard-module',
@@ -12,7 +14,7 @@ export class DashboardModuleComponent implements OnInit {
 
   blogpostForm: FormGroup;
   testname='Abinash';
-  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService) { 
+  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router:Router) { 
     this.blogpostForm = this.fb.group({
       HeaderTitle: '',
       paragraph: this.fb.array([]) ,
@@ -25,12 +27,16 @@ export class DashboardModuleComponent implements OnInit {
       this.testname = 'kumar'
     },5000)
     this.blogContentSchema =this.getData();
+    console.log("called");
   }
 
   blogContentSchema:any=[];
 
   getData(){
-    return this.bdservice.blogContentData;
+    // return this.bdservice.blogContentData;
+    this.bdservice.getData().subscribe((blogData)=>{
+      console.log(blogData);
+    });
   }
   
   copyCode(a:any) {
@@ -65,8 +71,12 @@ export class DashboardModuleComponent implements OnInit {
   onSubmit() {
     // console.log(this.blogpostForm.value)
     // this.blogContentSchema.push(this.blogpostForm.value);
+  
+  }
 
-    this.bdservice.blogContentData.push(this.blogpostForm.value);
+
+  navigateToAdmin() {
+    this.router.navigate(['/admin']);
   }
 
  
