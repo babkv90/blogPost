@@ -4,6 +4,8 @@ const Schema = mongoose.Schema;
 
 const blog = new Schema ({
         HeaderTitle: { type: String, required: true },
+        Topic : { type: String, required: true },
+        context :  { type: String, required: true },
         paragraph: [
                 {"contentType":{type:String,required:true},"content":{type:String,required:true}}
                    ],

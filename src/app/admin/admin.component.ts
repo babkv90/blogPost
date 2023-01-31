@@ -17,13 +17,17 @@ export class AdminComponent implements OnInit {
   constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router: Router) { 
     this.blogpostForm = this.fb.group({
       HeaderTitle: '',
-      paragraph: this.fb.array([]) ,
+      topic : '',
+      context:'',
+      paragraph: this.fb.array([
+      ]) ,
     });
  
   }
 
   ngOnInit(): void {
       // console.log("this.form",this.form.get('paragraphs'));
+      
   }
 
   
@@ -59,6 +63,8 @@ export class AdminComponent implements OnInit {
     // console.log(this.blogpostForm.value)
     // this.blogContentSchema.push(this.blogpostForm.value);
     // this.bdservice.blogContentData.push(this.blogpostForm.value);
+    this.blogpostForm.value.topic = this.blogpostForm.value.topic.toUpperCase();
+    console.log(this.blogpostForm.value);
     this.bdservice.saveData(this.blogpostForm.value).subscribe((blogData)=>{
       console.log(blogData);
       this.router.navigate(['']);

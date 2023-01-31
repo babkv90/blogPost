@@ -3,6 +3,18 @@
     <label for="name">Name </label>
     <input type="text" id="HeaderTitle" name="Header" formControlName="HeaderTitle">
   </p>
+  <p>
+    <label for="context">Context </label>
+    <select formControlName="context">
+      <option value="tutorials">Tutorial</option>
+      <option value="doubt">Doubt</option>
+    </select>  
+  </p>
+  <p>
+    <label for="name">Topic </label>  
+    <input type="text" id="topic" name="topic" formControlName="topic">
+  </p>
+
   Paragraph:<p>
     <button type="button" (click)="addSkills()">Add</button>
   </p>
