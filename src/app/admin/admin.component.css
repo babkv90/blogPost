@@ -1,0 +1,12 @@
+.background_gradient{
+    background: #D9DDDC;
+    min-height: 100vh;;
+}
+
+
+textarea {
+    width: 100%;
+    resize: none;
+    min-height: 200px;
+    max-height: 300px;
+  }

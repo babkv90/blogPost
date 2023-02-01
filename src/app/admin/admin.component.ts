@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BlogContentServiceService } from '../blog-content-service.service';
 import { Router } from '@angular/router';
@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  
-   
+
   title = 'FormArray Example in Angular Reactive forms';
- 
+  
+
+  @ViewChild('textarea', { static: false }) textarea!: ElementRef;
   blogpostForm: FormGroup;
-  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router: Router) { 
+  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router: Router,private renderer: Renderer2) { 
     this.blogpostForm = this.fb.group({
       HeaderTitle: '',
       topic : '',
@@ -28,6 +29,15 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
       // console.log("this.form",this.form.get('paragraphs'));
       
+  }
+   
+  ngAfterViewInit() {
+    if(this.textarea){
+      this.renderer.setStyle(this.textarea.nativeElement, 'height', 'auto');
+      this.renderer.setStyle(this.textarea.nativeElement, 'height', `${this.textarea.nativeElement.scrollHeight}px`);
+  
+    }
+  
   }
 
   
@@ -71,6 +81,13 @@ export class AdminComponent implements OnInit {
     });
    
   }
+
+
+  adjustHeight() {
+    this.renderer.setStyle(this.textarea.nativeElement, 'height', 'auto');
+    this.renderer.setStyle(this.textarea.nativeElement, 'height', `${this.textarea.nativeElement.scrollHeight}px`);
+  }
+
  
 }
 

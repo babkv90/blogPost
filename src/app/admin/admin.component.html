@@ -1,41 +1,61 @@
-<form [formGroup]="blogpostForm" (ngSubmit)="onSubmit()">
-  <p>
-    <label for="name">Name </label>
-    <input type="text" id="HeaderTitle" name="Header" formControlName="HeaderTitle">
-  </p>
-  <p>
-    <label for="context">Context </label>
-    <select formControlName="context">
-      <option value="tutorials">Tutorial</option>
-      <option value="doubt">Doubt</option>
-    </select>  
-  </p>
-  <p>
-    <label for="name">Topic </label>  
-    <input type="text" id="topic" name="topic" formControlName="topic">
-  </p>
-
-  Paragraph:<p>
-    <button type="button" (click)="addSkills()">Add</button>
-  </p>
-  <div formArrayName="paragraph">
-    <div *ngFor="let skill of paragraphs.controls; let i=index">
-      <div [formGroupName]="i">
-      
-        Content Type :
-        <select formControlName="contentType">
-          <option value="code">Code</option>
-          <option value="Article">Content Text</option>
-        </select>
-        content:
-        <input type="text" formControlName="content">
-        <button (click)="removeSkill(i)">Remove</button>
+<!-- <app-admin></app-admin> -->
+<div class="d-flex justify-content-center background_gradient" >
+  <div style="width: 90%;">
+  <div style="display: flex;flex-direction: column;margin-top: 2%; margin-bottom: 2%;">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="blogpostForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Header Title</label>
+            <input type="text" class="form-control" id="HeaderTitle" name="Header" formControlName="HeaderTitle" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="context">Context </label>
+          <select class="form-select" aria-label="Default select" formControlName="context">
+            <option selected>Open this select menu</option>
+            <option value="tutorials">Tutorial</option>
+            <option value="doubt">Doubt</option>
+          </select>
+          </div>  
+          <div class="form-group">
+            <label for="name">Topic</label>
+            <input type="text" class="form-control" id="topic" name="topic" formControlName="topic" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <div style="padding: 5px 0px 20px 0px;">
+              <label for="paragraph">Paragraph</label>
+              <button type="button"  class="btn btn-primary" style="float: right;" (click)="addSkills()">Add</button> 
+            </div>
+          </div>
+          <div formArrayName="paragraph">
+            <div *ngFor="let skill of paragraphs.controls; let i=index">
+              <div [formGroupName]="i" > 
+                <div class="form-group">
+                  <label for="content-type">Content Type</label>
+                  <select class="form-select" aria-label="Default select" formControlName="contentType">
+                    <option value="code">Code</option>
+                    <option value="Article">Content Text</option>
+                  </select>
+                </div>            
+               <!-- <input type="text" formControlName="content"> -->
+               <div  class="form-group">
+                <div style="padding: 5px 0px 20px 0px;">
+                  <label for="content">Content</label>
+                  <button class="btn btn-danger" style="float: right;"  (click)="removeSkill(i)">Remove</button>
+                </div> 
+                  <textarea  #textarea type="text"  class="form-control"  id="content" name="topic" 
+                  formControlName="content" (input)="adjustHeight()" rows="1"></textarea> 
+               </div>  
+              </div>
+            </div>
+          </div>  
+          <p>
+            <button type="submit"  class="btn btn-primary" style="float: right;margin-top: 10px;">Submit</button> 
+          </p> 
+        </form>
       </div>
     </div>
+   
   </div>
- 
-  <p>
-    <button type="submit">Submit</button>
-  </p>
- 
-</form>
+  </div>
+</div>
