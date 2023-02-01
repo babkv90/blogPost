@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { BlogContentServiceService } from '../blog-content-service.service';
 import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-module.component.css']
 })
 export class DashboardModuleComponent implements OnInit {
-  @ViewChild('codeSnippet') codeSnippet!: ElementRef;
-
+  // @ViewChild('codeSnippet') codeSnippet!: ElementRef;
+  @ViewChild('textarea', { static: false }) textarea!: ElementRef;
   blogpostForm: FormGroup;
   testname='Abinash';
-  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router:Router) { 
+  constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router:Router,private renderer: Renderer2) { 
     this.blogpostForm = this.fb.group({
       HeaderTitle: '',
       paragraph: this.fb.array([]) ,
@@ -24,6 +24,17 @@ export class DashboardModuleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
+  }
+
+
+     
+  ngAfterViewInit() {
+    if(this.textarea){
+      this.renderer.setStyle(this.textarea.nativeElement, 'height', 'auto');
+      this.renderer.setStyle(this.textarea.nativeElement, 'height', `${this.textarea.nativeElement.scrollHeight}px`);
+  
+    }
+  
   }
 
   blogContentSchema:any=[];
@@ -36,14 +47,14 @@ export class DashboardModuleComponent implements OnInit {
     });
   }
   
-  copyCode(a:any) {
-    if (this.codeSnippet) {
-      // Copy the code
-      navigator.clipboard.writeText(this.codeSnippet.nativeElement.textContent);
-    } else {
-      console.log("Code Snippet not found");
-    }
-  }
+  // copyCode(a:any) {
+  //   if (this.codeSnippet) {
+  //     // Copy the code
+  //     navigator.clipboard.writeText(this.codeSnippet.nativeElement.textContent);
+  //   } else {
+  //     console.log("Code Snippet not found");
+  //   }
+  // }
 
    
   get paragraphs() : FormArray {
@@ -76,6 +87,11 @@ export class DashboardModuleComponent implements OnInit {
     this.router.navigate(['/admin']);
   }
 
+
+  adjustHeight() {
+    this.renderer.setStyle(this.textarea.nativeElement, 'height', 'auto');
+    this.renderer.setStyle(this.textarea.nativeElement, 'height', `${this.textarea.nativeElement.scrollHeight}px`);
+  }
  
 
 }

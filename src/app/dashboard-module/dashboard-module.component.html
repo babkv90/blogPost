@@ -13,7 +13,8 @@
             <p>{{paragraph.content}}</p>
         </div>
         <div *ngIf="paragraph.contentType === 'code'">
-            <pre>{{ paragraph.content }}</pre>
+            <!-- <pre>{{ paragraph.content }}</pre> -->
+            <textarea  #textarea type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()" rows="1">{{paragraph.content}}</textarea> 
           </div>
        
     </div>
