@@ -15,8 +15,9 @@ export class SidebarAccordianComponent implements OnInit {
     this.content=this.inputData;
 
   }
-  sendData(){
-    this.dataEvent.emit('Some data');
+  sendData(menu:any){
+    console.log(menu);
+    this.dataEvent.emit(menu.menuTitle);
   }
 
   
