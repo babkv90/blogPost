@@ -1,11 +1,13 @@
 
 <!-- <p>hello</p> -->
-  
-
-
 <app-navbar-component></app-navbar-component>
 <button (click)="navigateToAdmin()">Go to Admin</button>
-<div class="container">
+<div style="display: flex;">
+<div style="width: 20%;">
+    <app-sidebar-accordian></app-sidebar-accordian>
+</div>
+<div class="container" style="margin-top: 30px;width: 70%;"> 
+    <div >      
    <div class="card-container" *ngFor="let item of blogContentSchema">
     <h1>{{ item.HeaderTitle }}</h1>
     <div *ngFor="let paragraph of item.paragraph">
@@ -13,14 +15,25 @@
             <p>{{paragraph.content}}</p>
         </div>
         <div *ngIf="paragraph.contentType === 'code'">
+            <pre>
+                <code>
+                    {{ paragraph.content }}
+                </code>
+               </pre>
             <!-- <pre>{{ paragraph.content }}</pre> -->
-            <textarea  #textarea type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()" rows="1">{{paragraph.content}}</textarea> 
+            <!-- <textarea #codeEditor type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()"  rows="1">{{paragraph.content}}</textarea> -->
+            <!-- <textarea  #textarea type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()" rows="1">{{paragraph.content}}</textarea>  -->
           </div>
        
     </div>
+    
    
    </div>
+    </div>
+    <div></div>
 
 </div>
+</div>
+
 
 

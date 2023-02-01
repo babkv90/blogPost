@@ -4,6 +4,7 @@ import { DashboardModuleComponent } from './dashboard-module.component';
 import { NavbarComponentComponent } from '../navbar-component/navbar-component.component';
 import { DashboardModuleRoutingModule } from './dashboard-module-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidebarAccordianComponent } from '../sidebar-accordian/sidebar-accordian.component';
 
 
 
@@ -11,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     DashboardModuleComponent,
-    NavbarComponentComponent
+    NavbarComponentComponent,
+    SidebarAccordianComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,7 @@
+.navbar-nav {
+    flex-direction: column;
+  }
+  .nav-item + .nav-item {
+    margin-top: .5rem;
+  }
+  
