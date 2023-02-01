@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router: Router,private renderer: Renderer2) { 
     this.blogpostForm = this.fb.group({
       HeaderTitle: '',
+      menuTitle:'',
       topic : '',
       context:'',
       paragraph: this.fb.array([
