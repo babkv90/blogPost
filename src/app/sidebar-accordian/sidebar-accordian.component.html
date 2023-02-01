@@ -8,7 +8,6 @@
             </button>
           </h5>
         </div>
-  
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionSidebar">
           <div class="card-body">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,18 +16,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav">
-                    <li class="nav-item active">
-                      <a class="nav-link">Angular 11 Introduction<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">Angular 11 Features</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">Angular 11 Installation</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">Angular History and version</a>
-                      </li>     
+                    <li class="nav-item" *ngFor="let menu of this.content">
+                        <a class="nav-link">Angular 11 Introduction<span class="sr-only" (click)="sendData()">{{menu.menuTitle}}</span></a>
+                    </li>     
                   </ul>
                 </div>
               </nav>     

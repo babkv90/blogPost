@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { BlogContentServiceService } from '../blog-content-service.service';
 import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class DashboardModuleComponent implements OnInit {
   // @ViewChild('codeSnippet') codeSnippet!: ElementRef;
   @ViewChild('textarea', { static: false }) textarea!: ElementRef;
-  
+
   blogpostForm: FormGroup;
   testname='Abinash';
   constructor(private fb: FormBuilder,public bdservice :BlogContentServiceService,private router:Router,private renderer: Renderer2) { 
@@ -73,6 +73,13 @@ export class DashboardModuleComponent implements OnInit {
       console.log(blogData);
       this.blogContentSchema =blogData
     });
+  }
+
+  receivedData: any;
+
+  receiveData(data: string) {
+    this.receivedData = data;
+    console.log(this.receivedData);
   }
   
   // copyCode(a:any) {
