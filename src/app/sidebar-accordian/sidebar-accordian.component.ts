@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output,SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-accordian',
@@ -11,13 +11,18 @@ export class SidebarAccordianComponent implements OnInit {
   constructor() { }
   content:any=[];
   ngOnInit(): void {
-    console.log(this.inputData.menuTitle);
+    // console.log("",this.inputData.menuTitle);
     this.content=this.inputData;
 
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(this.inputData);
+    this.content=this.inputData;
+  
+  }
   sendData(menu:any){
-    console.log(menu);
-    this.dataEvent.emit(menu.menuTitle);
+    this.dataEvent.emit(menu);
   }
 
   

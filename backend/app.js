@@ -3,6 +3,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require('cors');
+
 // const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://blogpostdatabase:T9yporyE0Vs8zFWL@cluster0.tvyrltn.mongodb.net/?retryWrites=true&w=majority";
@@ -20,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+app.use(cors());
 
 //MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
   //  if (err) throw err;

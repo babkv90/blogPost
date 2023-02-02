@@ -1,39 +1,55 @@
 
 <!-- <p>hello</p> -->
-<app-navbar-component></app-navbar-component>
-<button (click)="navigateToAdmin()">Go to Admin</button>
 <div style="display: flex;">
-<div style="width: 20%;">
-    <app-sidebar-accordian [inputData]="blogContentSchema" (dataEvent)="receiveData($event)"></app-sidebar-accordian>
-</div>
-<div class="container" style="margin-top: 30px;width: 70%;"> 
-    <div >      
-   <div class="card-container" *ngFor="let item of blogContentSchema">
-    <h1>{{ item.HeaderTitle }}</h1>
-    <div *ngFor="let paragraph of item.paragraph">
-        <div *ngIf="paragraph.contentType === 'Article'">
-            <p>{{paragraph.content}}</p>
-        </div>
-        <div *ngIf="paragraph.contentType === 'code'">
-            <pre>
-                <code>
-                    {{ paragraph.content }}
-                </code>
-               </pre>
-            <!-- <pre>{{ paragraph.content }}</pre> -->
-            <!-- <textarea #codeEditor type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()"  rows="1">{{paragraph.content}}</textarea> -->
-            <!-- <textarea  #textarea type="text"  class="form-control"  id="content" name="content" (input)="adjustHeight()" rows="1">{{paragraph.content}}</textarea>  -->
-          </div>
+    <div style="position:fixed;z-index: 1;width: 100%;">
+        <app-navbar-component></app-navbar-component>
+    </div>
+    <!-- <button (click)="navigateToAdmin()">Go to Admin</button> -->
+    <div class="row" style="display: flex;margin-top: 5%">
        
+            <div class="col-2" style="width: 20%;height: 100vh;background:#6474bf;position: fixed;">
+                <app-sidebar-accordian [inputData]="blogContentSchema" (dataEvent)="receiveData($event)"></app-sidebar-accordian>
+            </div>
+            <div  class="col-10" class="container" style="width: 80%;margin-right: 0;"> 
+                <div class="text-section">   
+                    <div class="card-container">
+                        <h1>{{ receivedData.HeaderTitle }}</h1>
+                        <div *ngFor="let paragraph of receivedData.paragraph">
+                            <div *ngIf="paragraph.contentType === 'Article'">
+                                <p>{{paragraph.content}}</p>
+                            </div>
+                            <div *ngIf="paragraph.contentType === 'code'">
+                                <pre>
+                                    <code>
+                                        {{ paragraph.content }}
+                                    </code>
+                                   </pre>
+                              </div>             
+                        </div>
+                    </div>
+               <!-- <div class="card-container" *ngFor="let item of blogContentSchema">
+                <h1>{{ item.HeaderTitle }}</h1>
+                <div *ngFor="let paragraph of item.paragraph">
+                    <div *ngIf="paragraph.contentType === 'Article'">
+                        <p>{{paragraph.content}}</p>
+                    </div>
+                    <div *ngIf="paragraph.contentType === 'code'">
+                        <pre>
+                            <code>
+                                {{ paragraph.content }}
+                            </code>
+                           </pre>
+                     
+                      </div>
+                   
+                </div>
+                
+               
+               </div> -->
+                </div>
+            </div>
+        
     </div>
-    
-   
-   </div>
-    </div>
-    <div></div>
-
 </div>
-</div>
-
 
 

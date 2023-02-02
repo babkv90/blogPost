@@ -110,4 +110,55 @@ textarea {
   }
 
 
+  .text-section {
+    font-size: 16px;
+    line-height: 2.5;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+    /* width: 80%; */
+    margin: 0 auto;
+  }
   
+  p{
+    margin-bottom: 1em;
+  }
+
+
+
+
+
+
+
+
+  .parent {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .first-child {
+    width: 20%;
+    background-color: lightgray;
+    position: fixed;
+    top: 0;
+  }
+
+  .second-child {
+    width: 80%;
+    overflow: auto;
+  }
+
+  .left-child {
+    width: 20%;
+    background-color: lightblue;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  .right-child {
+    width: 80%;
+    background-color: lightcoral;
+    overflow: auto;
+  }

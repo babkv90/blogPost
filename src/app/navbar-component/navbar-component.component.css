@@ -19,14 +19,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+   
     padding: 2px 20px;
-    /* background-color:#603F83FF; */
+    /* position: fixed; */
+    z-index: 1;
     color: #fff; 
     background: #e0e0e0;
     box-shadow:  20px 20px 60px #bebebe,
                  -20px -20px 60px #ffffff;
 
    }
+
+   /* .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    z-index: 1;
+  } */
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+  }
    .nav-links a {
     color: black;
    }
